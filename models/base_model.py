@@ -4,18 +4,16 @@ Module to write a class BaseModel.
 """
 from uuid import uuid4
 import models
-from datetime import datetime
-""" date = '%Y-%m-%dT%H:%M:%S.%f' """
+from datetime import date, datetime
+date = '%Y-%m-%dT%H:%M:%S.%f'
 
 
 class BaseModel:
     """
     Defines all common attributes/methods for other classes.
     """
+
     def __init__(self, *args, **kwargs):
-        self.id = str(uuid4())
-        self.created_at = datetime.now()
-        self.updated_at = datetime.now()
         """ models.storage.new(self) """
         if kwargs is not None:
             for key, value in kwargs.items():
@@ -23,8 +21,11 @@ class BaseModel:
                     if key == 'created_at' or key == 'updated_at':
                         # Establecemos el valor del atributo especificado
                         # del objeto especificado.
-                        setattr(self, key, datetime.isoformat(value))
+                        setattr(self, key, datetime.strptime(value, date))
                     setattr(self, key, value)
+        self.id = str(uuid4())
+        self.created_at = datetime.now()
+        self.updated_at = datetime.now()
 
     def __str__(self):
         """ Return string representation. """
@@ -33,7 +34,7 @@ class BaseModel:
 
     def save(self):
         """ Updates attribute updated_at with the current datetime. """
-        self.updated_at = datetime.now().isoformat()
+        self.updated_at = datetime.now()
         models.storage.save()
 
     def to_dict(self):
@@ -42,9 +43,9 @@ class BaseModel:
         """
         new_dict = self.__dict__.copy()
         for key, value in new_dict.items():
-            """ if key == 'created_at' or key == 'updated_at':
-                new_dict[key] = datetime.datetime.now().isoformat(value)
-            else: """
-            new_dict[key] = value
+            if key == 'created_at' or key == 'updated_at':
+                new_dict[key] = datetime.isoformat(value)
+            else:
+                new_dict[key] = value
         new_dict['__class__'] = self.__class__.__name__
         return new_dict
