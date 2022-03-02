@@ -3,6 +3,17 @@
 Module to write a class FileStorage
 """
 import json
+import os.path
+from models.base_model import BaseModel
+# from models.base_model import BaseModel
+# from models.user import User
+# from models.state import State
+# from models.city import City
+# from models.amenity import Amenity
+# from models.place import Place
+# from models.review import Review
+
+data = '{"User" : "User", "State" : "State", "Place" : "Place", "City" : "City", "Amenity" : "Amenity", "Review" : "Review"}'
 
 
 class FileStorage:
@@ -20,22 +31,31 @@ class FileStorage:
 
     def new(self, obj):
         """ Sets in __objects the obj with key <obj class name>.id """
-        key = obj.__class__.__name__ + '.id'
+        key = obj.__class__.__name__ + '.' + str(obj.id)
         # In dictionaries, if the key does not exist, it creates it
         # and if it does exist, it replaces it.
         self.__objects[key] = obj
 
     def save(self):
         """ Serializes __objects to the JSON file (path: __file_path) """
-        with open(self.__file_path, 'w') as file:
-            json.dump(self.__objects, file)
+        new_dict = {}
+        for key in self.__objects:
+            new_dict[key] = self.__objects[key].to_dict()
+        with open(self.__file_path, 'w', encoding='UTF-8') as file:
+            json.dump(new_dict, file)
 
     def reload(self):
         """ Seserializes the JSON file to __objects
         (only if the JSON file (__file_path) exists ; otherwise, do nothing.
         If the file doesn’t exist, no exception should be raised) """
-        try:
-            with open(self.__file_path, 'r') as file:
-                self.__objects = json.load(file)
-        except Exception:
-            pass
+        new_dict = {}
+        if os.path.isfile(self.__file_path):
+            try:
+                with open(self.__file_path, 'r', encoding='UTF-8') as file:
+                    new_dict = json.load(file)
+                for key, value in new_dict.items():
+                    object = value['__class__']
+                    objects = object + '(**value)'
+                    self.__objects[key] = eval(objects)
+            except Exception:
+                pass

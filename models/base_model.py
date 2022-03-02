@@ -3,9 +3,8 @@
 Module to write a class BaseModel.
 """
 from uuid import uuid4
-import models
 from datetime import datetime
-from models import storage
+import models
 date = '%Y-%m-%dT%H:%M:%S.%f'
 
 
@@ -27,7 +26,7 @@ class BaseModel:
         self.id = str(uuid4())
         self.created_at = datetime.now()
         self.updated_at = datetime.now()
-        storage.new(kwargs)
+        models.storage.new(self)
 
     def __str__(self):
         """ Return string representation. """
@@ -37,7 +36,7 @@ class BaseModel:
     def save(self):
         """ Updates attribute updated_at with the current datetime. """
         self.updated_at = datetime.now()
-        storage.save()
+        models.storage.save()
 
     def to_dict(self):
         """
