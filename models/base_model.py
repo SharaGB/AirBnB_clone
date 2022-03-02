@@ -2,8 +2,9 @@
 """
 Module to write a class BaseModel.
 """
+
+
 from uuid import uuid4
-import models
 from datetime import datetime
 from models import storage
 date = '%Y-%m-%dT%H:%M:%S.%f'
@@ -13,7 +14,9 @@ class BaseModel:
     """
     Defines all common attributes/methods for other classes.
     """
+
     def __init__(self, *args, **kwargs):
+        """ Initializes the data. """
         if kwargs is not None:
             for key, value in kwargs.items():
                 if key != '__class__':
@@ -34,8 +37,8 @@ class BaseModel:
 
     def save(self):
         """ Updates attribute updated_at with the current datetime. """
-        storage.save()
         self.updated_at = datetime.now()
+        storage.save()
 
     def to_dict(self):
         """
