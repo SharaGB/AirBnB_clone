@@ -4,7 +4,6 @@ Module to write a class FileStorage
 """
 import json
 import os.path
-import uuid
 from models.base_model import BaseModel
 
 
@@ -23,7 +22,7 @@ class FileStorage:
 
     def new(self, obj):
         """ Sets in __objects the obj with key <obj class name>.id """
-        key = obj.__class__.__name__ + '.' + str(uuid.uuid4())  # obj.id, BaseModel.id
+        key = obj.__class__.__name__ + '.' + str(obj.id)  # obj.id, BaseModel.id
         # In dictionaries, if the key does not exist, it creates it
         # and if it does exist, it replaces it.
         self.__objects[key] = obj
