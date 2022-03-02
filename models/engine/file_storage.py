@@ -13,8 +13,6 @@ from models.base_model import BaseModel
 # from models.place import Place
 # from models.review import Review
 
-data = '{"User" : "User", "State" : "State", "Place" : "Place", "City" : "City", "Amenity" : "Amenity", "Review" : "Review"}'
-
 
 class FileStorage:
     """
