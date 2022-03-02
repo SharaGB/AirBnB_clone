@@ -20,6 +20,7 @@ class FileStorage:
         """"""
         key = obj.__class__.__name__ + '.id'
         self.__objects[key] = obj
+        print(self.__objects)
 
     def save(self):
         """"""
