@@ -5,6 +5,16 @@ Module to write a class FileStorage
 import json
 import os.path
 from models.base_model import BaseModel
+<<<<<<< HEAD
+=======
+# from models.base_model import BaseModel
+# from models.user import User
+# from models.state import State
+# from models.city import City
+# from models.amenity import Amenity
+# from models.place import Place
+# from models.review import Review
+>>>>>>> b8e33adb3001f0aeef7cc82a10da44565c602723
 
 
 class FileStorage:
@@ -39,9 +49,21 @@ class FileStorage:
         """ Seserializes the JSON file to __objects
         (only if the JSON file (__file_path) exists ; otherwise, do nothing.
         If the file doesn’t exist, no exception should be raised) """
+<<<<<<< HEAD
         if os.path.isfile(self.__file_path):
             try:
                 with open(self.__file_path, 'r') as file:
                     self.__objects = json.loads(file)
+=======
+        new_dict = {}
+        if os.path.isfile(self.__file_path):
+            try:
+                with open(self.__file_path, 'r', encoding='UTF-8') as file:
+                    new_dict = json.load(file)
+                for key, value in new_dict.items():
+                    object = value['__class__']
+                    objects = object + '(**value)'
+                    self.__objects[key] = eval(objects)
+>>>>>>> b8e33adb3001f0aeef7cc82a10da44565c602723
             except Exception:
                 pass
