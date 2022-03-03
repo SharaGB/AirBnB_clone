@@ -3,11 +3,9 @@
 Module to write a class HBNBCommand
 """
 import cmd
-from posixpath import split
-import sys
 import models
-from models.base_model import BaseModel
 from shlex import split as split
+from models.base_model import BaseModel
 
 
 class HBNBCommand(cmd.Cmd):
@@ -15,7 +13,8 @@ class HBNBCommand(cmd.Cmd):
     prompt = '(hbnb) '
 
     def do_quit(self, line):
-        """ Quit command to exit the program. """
+        """ Quit command to exit the program.
+        """
         return True
 
     def do_EOF(self, line):
@@ -33,23 +32,23 @@ class HBNBCommand(cmd.Cmd):
         elif line != 'BaseModel':
             print("** class doesn't exist **")
         else:
-            new = BaseModel()
-            new.save()
-            print(new.id)
+            new_instance = BaseModel()
+            new_instance.save()
+            print(new_instance.id)
 
     def do_show(self, line):
         """ Prints the string representation of an instance. """
         splitline = split(line)
         if not splitline:
-            print(" class name missing ")
+            print("** class name missing **")
         elif splitline[0] != 'BaseModel':
-            print(" class doesn't exist ")
+            print("** class doesn't exist **")
         elif len(splitline) < 2:
-            print(" instance id missing ")
+            print("** instance id missing **")
         else:
             new_instance = splitline[0] + '.' + splitline[1]
             if new_instance not in models.storage.all():
-                print(" no instance found ")
+                print("** no instance found **")
             else:
                 print(models.storage.all()[new_instance])
 
@@ -57,15 +56,15 @@ class HBNBCommand(cmd.Cmd):
         """ Deletes an instance based on the class name and id. """
         splitline = split(line)
         if not splitline:
-            print(" class name missing ")
+            print("** class name missing **")
         elif splitline[0] != 'BaseModel':
-            print(" class doesn't exist ")
+            print("** class doesn't exist **")
         elif len(splitline) < 2:
-            print(" instance id missing ")
+            print("** instance id missing **")
         else:
             new_instance = splitline[0] + '.' + splitline[1]
             if new_instance not in models.storage.all():
-                print(" no instance found ")
+                print("** no instance found **")
             else:
                 del models.storage.all()[new_instance]
                 models.storage.save()
