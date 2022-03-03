@@ -104,7 +104,7 @@ class HBNBCommand(cmd.Cmd):
         """ Updates an instance based on the class name and id
                 by adding or updating attribute. """
         splitline = split(line)
-        if not splitline:
+        if not line:
             print("** class name missing **")
         elif splitline[0] != 'BaseModel':
             print("** class doesn't exist **")
@@ -114,18 +114,14 @@ class HBNBCommand(cmd.Cmd):
             print("** attribute name missing **")
         elif len(splitline) < 4:
             print("** value missing **")
-        elif splitline[0] + '.' + splitline[1] not in models.storage.all:
-            print("** no instance found **")
         else:
             new_instance = splitline[0] + '.' + splitline[1]
-            object = models.storage.all()[new_instance]
-            object.__dict__[splitline[2]] = splitline[3]
-            object.save()
-            # splitline[2] not in ['id', 'created_at', 'updated_at']:
-            # object = models.storage.all()[new_instance]
-            # object.__dict__[splitline[2]] = splitline[3]
-            # models.storage.all().update(entry)  # [new_instance]
-            # object.save()
+            if new_instance not in models.storage.all():
+                print("** no instance found **")
+            else:
+                setattr(models.storage.all()[new_instance],
+                        splitline[2], splitline[3])
+                models.storage.save()
 
 
 if __name__ == '__main__':
