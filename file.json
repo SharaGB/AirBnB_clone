@@ -1,0 +1,58 @@
+{
+    "BaseModel.06ff1007-9e7a-4bc9-93ba-5a1173213ee4": {
+        "id": "06ff1007-9e7a-4bc9-93ba-5a1173213ee4",
+        "created_at": "2022-03-02T19:18:34.990463",
+        "updated_at": "2022-03-02T19:18:34.990464",
+        "name": "My_First_Model",
+        "my_number": 89,
+        "__class__": "BaseModel"
+    },
+    "BaseModel.333179af-c586-428f-9c5f-648c05a0d303": {
+        "id": "06ff1007-9e7a-4bc9-93ba-5a1173213ee4",
+        "created_at": "2022-03-02T19:18:34.990463",
+        "updated_at": "2022-03-02T19:18:34.990464",
+        "name": "My_First_Model",
+        "my_number": 89,
+        "__class__": "BaseModel"
+    },
+    "BaseModel.ef99b315-90d8-4275-9c20-cd9aa9cf0ee8": {
+        "id": "ef99b315-90d8-4275-9c20-cd9aa9cf0ee8",
+        "created_at": "2022-03-02T19:18:34.990533",
+        "updated_at": "2022-03-02T19:18:34.990533",
+        "name": "My_First_Model",
+        "my_number": 89,
+        "__class__": "BaseModel"
+    },
+    "BaseModel.e04818dd-6fe1-4e6c-8c22-61a437ba5989": {
+        "id": "ef99b315-90d8-4275-9c20-cd9aa9cf0ee8",
+        "created_at": "2022-03-02T19:18:34.990533",
+        "updated_at": "2022-03-02T19:18:34.990533",
+        "name": "My_First_Model",
+        "my_number": 89,
+        "__class__": "BaseModel"
+    },
+    "BaseModel.876a7951-f075-4ae4-9abe-ef5b5d70b018": {
+        "id": "876a7951-f075-4ae4-9abe-ef5b5d70b018",
+        "created_at": "2022-03-02T19:18:34.990580",
+        "updated_at": "2022-03-02T19:18:34.990581",
+        "name": "My_First_Model",
+        "my_number": 89,
+        "__class__": "BaseModel"
+    },
+    "BaseModel.97cabc3f-7a3e-482d-8dc2-293b782c3669": {
+        "id": "876a7951-f075-4ae4-9abe-ef5b5d70b018",
+        "created_at": "2022-03-02T19:18:34.990580",
+        "updated_at": "2022-03-02T19:18:34.990581",
+        "name": "My_First_Model",
+        "my_number": 89,
+        "__class__": "BaseModel"
+    },
+    "BaseModel.9e0e97eb-df97-4fe0-99ca-673549e40d8a": {
+        "id": "9e0e97eb-df97-4fe0-99ca-673549e40d8a",
+        "created_at": "2022-03-02T19:18:34.990783",
+        "updated_at": "2022-03-02T19:18:34.990788",
+        "name": "My_First_Model",
+        "my_number": 89,
+        "__class__": "BaseModel"
+    }
+}
