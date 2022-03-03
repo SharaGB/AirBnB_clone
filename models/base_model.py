@@ -15,7 +15,7 @@ class BaseModel:
 
     def __init__(self, *args, **kwargs):
         """ Initializes the data. """
-        if kwargs is not None:
+        if len(kwargs) != 0:
             for key, value in kwargs.items():
                 if key != '__class__':
                     if key == 'created_at' or key == 'updated_at':
@@ -23,10 +23,11 @@ class BaseModel:
                         # del objeto especificado.
                         setattr(self, key, datetime.strptime(value, date))
                     setattr(self, key, value)
-        self.id = str(uuid4())
-        self.created_at = datetime.now()
-        self.updated_at = datetime.now()
-        models.storage.new(self)
+        else:
+            self.id = str(uuid4())
+            self.created_at = datetime.now()
+            self.updated_at = datetime.now()
+            models.storage.new(self)
 
     def __str__(self):
         """ Return string representation. """
@@ -43,10 +44,11 @@ class BaseModel:
         Returns a dictionary containing all keys/values of the instance.
         """
         new_dict = self.__dict__.copy()
-        for key, value in new_dict.items():
-            if key == 'created_at' or key == 'updated_at':
-                new_dict[key] = datetime.isoformat(value)
-            else:
-                new_dict[key] = value
+        if 'created_at' in new_dict and\
+                type(new_dict['created_at']) is datetime:
+            new_dict['created_at'] = new_dict['created_at'].strftime(date)
+        if 'updated_at' in new_dict and\
+                type(new_dict['updated_at']) is datetime:
+            new_dict['updated_at'] = new_dict['updated_at'].strftime(date)
         new_dict['__class__'] = self.__class__.__name__
         return new_dict
