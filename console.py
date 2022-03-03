@@ -77,9 +77,9 @@ class HBNBCommand(cmd.Cmd):
         if not line or line == 'BaseModel':
             for key, value in models.storage.all().items():
                 list.append(value.__str__())
-            print(list)
             for item in list:
                 list2.append(str(item))
+            print(list2)
         else:
             print("** class doesn't exist **")
 
@@ -92,9 +92,9 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
         elif len(splitline) < 2:
             print("** instance id missing **")
-        elif len(splitline) < 4:
+        elif len(splitline) < 3:
             print("** attribute name missing **")
-        elif len(splitline) < 5:
+        elif len(splitline) < 4:
             print("** value missing **")
         else:
             new_instance = splitline[0] + '.' + splitline[1]
@@ -103,7 +103,7 @@ class HBNBCommand(cmd.Cmd):
             else:
                 entry = {splitline[2]: splitline[3]}
                 models.storage.all().update(entry)  # [new_instance]
-                # models.storage.save()
+                models.storage.save()
 
 
 if __name__ == '__main__':
