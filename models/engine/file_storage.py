@@ -5,6 +5,7 @@ Module to write a class FileStorage
 import json
 import os.path
 from models.base_model import BaseModel
+from models.user import User
 # from models.base_model import BaseModel
 # from models.user import User
 # from models.state import State
