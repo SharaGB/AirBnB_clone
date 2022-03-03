@@ -3,7 +3,6 @@
 Module to write a class HBNBCommand
 """
 import cmd
-from xxlimited import new
 import models
 from shlex import split as split
 from models.base_model import BaseModel
