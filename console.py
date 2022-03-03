@@ -91,24 +91,23 @@ class HBNBCommand(cmd.Cmd):
             for new_instance in models.storage.all().values():
                 str_list.append(str(new_instance))
         else:
-            if line != 'BaseModel':
+            splitline = split(line)
+            if splitline[0] == 'BaseModel':
+                for key, value in models.storage.all().items():
+                    if value.__class__.__name__ == splitline[0]:
+                        str_list.append(str(value))
+            else:
                 print("** class doesn't exist **")
                 return False
-            for key, value in models.storage.all().items():
-                left = key.split('.')[0]
-                if left == line:
-                    str_list.append(str(value))
         print(str_list)
 
-        def do_update(self, line):
-            """ Updates an instance based on the class name and id
-                    by adding or updating attribute. """
+    def do_update(self, line):
+        """ Updates an instance based on the class name and id
+                by adding or updating attribute. """
         splitline = split(line)
         if not splitline:
             print("** class name missing **")
-            return False
         elif splitline[0] != 'BaseModel':
-            print("acá")
             print("** class doesn't exist **")
         elif len(splitline) < 2:
             print("** instance id missing **")
@@ -116,14 +115,18 @@ class HBNBCommand(cmd.Cmd):
             print("** attribute name missing **")
         elif len(splitline) < 4:
             print("** value missing **")
+        elif splitline[0] + '.' + splitline[1] not in models.storage.all:
+            print("** no instance found **")
         else:
             new_instance = splitline[0] + '.' + splitline[1]
-            if new_instance not in models.storage.all():
-                print("** no instance found **")
-            else:
-                entry = {splitline[2]: splitline[3]}
-                models.storage.all().update(entry)  # [new_instance]
-                # models.storage.save()
+            object = models.storage.all()[new_instance]
+            object.__dict__[splitline[2]] = splitline[3]
+            object.save()
+            # splitline[2] not in ['id', 'created_at', 'updated_at']:
+            # object = models.storage.all()[new_instance]
+            # object.__dict__[splitline[2]] = splitline[3]
+            # models.storage.all().update(entry)  # [new_instance]
+            # object.save()
 
 
 if __name__ == '__main__':
