@@ -122,7 +122,7 @@ class HBNBCommand(cmd.Cmd):
             else:
                 entry = {splitline[2]: splitline[3]}
                 models.storage.all().update(entry)  # [new_instance]
-                # models.storage.save()
+                models.storage.save()
 
 
 if __name__ == '__main__':
