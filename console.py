@@ -90,24 +90,23 @@ class HBNBCommand(cmd.Cmd):
             for new_instance in models.storage.all().values():
                 str_list.append(str(new_instance))
         else:
-            if line != 'BaseModel':
+            splitline = split(line)
+            if splitline[0] == 'BaseModel':
+                for key, value in models.storage.all().items():
+                    if value.__class__.__name__ == splitline[0]:
+                        str_list.append(str(value))
+            else:
                 print("** class doesn't exist **")
                 return False
-            for key, value in models.storage.all().items():
-                left = key.split('.')[0]
-                if left == line:
-                    str_list.append(str(value))
         print(str_list)
 
-        def do_update(self, line):
-            """ Updates an instance based on the class name and id
+    def do_update(self, line):
+        """ Updates an instance based on the class name and id
                     by adding or updating attribute. """
         splitline = split(line)
-        if not splitline:
+        if not line:
             print("** class name missing **")
-            return False
         elif splitline[0] != 'BaseModel':
-            print("acá")
             print("** class doesn't exist **")
         elif len(splitline) < 2:
             print("** instance id missing **")
@@ -120,8 +119,8 @@ class HBNBCommand(cmd.Cmd):
             if new_instance not in models.storage.all():
                 print("** no instance found **")
             else:
-                entry = {splitline[2]: splitline[3]}
-                models.storage.all().update(entry)  # [new_instance]
+                setattr(models.storage.all()[new_instance],
+                        splitline[2], splitline[3])
                 models.storage.save()
 
 
