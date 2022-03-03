@@ -85,7 +85,6 @@ class HBNBCommand(cmd.Cmd):
         #     print(list2)
         # else:
         #     print("** class doesn't exist **")
-
         str_list = []
         if not line:
             for new_instance in models.storage.all().values():
