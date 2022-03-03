@@ -72,8 +72,14 @@ class HBNBCommand(cmd.Cmd):
     def do_all(self, line):
         """ Print a representation of all instance based
         or not in the class name. """
+        list = []
+        list2 = []
         if not line or line == 'BaseModel':
-            print([models.storage.all()])
+            for key, value in models.storage.all().items():
+                list.append(value.str())
+            print(list)
+            for item in list:
+                list2.append(str(item))
         else:
             print("** class doesn't exist **")
 
