@@ -3,7 +3,6 @@
 Module to write a class HBNBCommand
 """
 import cmd
-from xxlimited import new
 import models
 from shlex import split as split
 from models.base_model import BaseModel
@@ -30,6 +29,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_EOF(self, line):
         """ Exit the program."""
+        print("")
         return True
 
     def emptyline(self):
@@ -45,15 +45,14 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
         else:
             new_instance = new_classes[splitline[0]]()
-        print(new_instance.id)
-        new_instance.save()
+            print(new_instance.id)
+            new_instance.save()
 
     def do_show(self, line):
         """ Prints the string representation of an instance. """
         splitline = split(line)
         if not splitline:
             print("** class name missing **")
-            return False
         elif splitline[0] not in new_classes:
             print("** class doesn't exist **")
         elif len(splitline) < 2:
@@ -123,6 +122,46 @@ class HBNBCommand(cmd.Cmd):
                 setattr(models.storage.all()[new_instance],
                         splitline[2], splitline[3])
                 models.storage.save()
+
+    def default(self, args):
+        """ Retrieve all instances of a class. """
+        splitline = args.split('.', 1)
+        if len(splitline) >= 2:
+            args = splitline[1].split('(')
+            if args[0] == 'all':
+                self.do_all(splitline[0])
+            elif args[0] == 'count':
+                for key in models.storage.all():
+                    if splitline[0] == key.split(".")[0]:
+                        count += 1
+                print(count)
+            elif args[0] == 'show':
+                id = args[1].split(')')
+                str_id = str(splitline[0]) + " " + str(id[0])
+                self.do_show(str_id)
+            elif args[0] == 'destroy':
+                id = args[1].split(')')
+                str_id = str(splitline[0]) + " " + str(id[0])
+                self.do_destroy(str_id)
+            elif args[0] == 'update':
+                update = args[1].split(')')
+                split = update[0].split('{')
+                if len(split) == 1:
+                    # Caso de establecer manualmente la clave y el valor
+                    arg = update[0].split(",")
+                    str_id = str(splitline[0]) + " " + str(arg[0]) + \
+                        " " + str(arg[1]) + " " + str(arg[2])
+                    self.do_update(str_id)
+                else:
+                    # Caso de establecer clave y valor por diccionario
+                    id = split[0][:-2]
+                    str_dict = split[1][:-1]
+                    delim = str_dict.split(',')
+                    for row in delim:
+                        key_value = row.split(':')
+                        str_id = str(splitline[0]) + " " + str(id) + \
+                            " " + str(key_value[0]) + " " + str(key_value[1])
+                        self.do_update(str_id)
 
 
 if __name__ == '__main__':
