@@ -18,8 +18,8 @@ from models.base_model import BaseModel
 from models.engine.file_storage import FileStorage
 
 
-F_storage = FileStorage()
-B_model = BaseModel()
+#F_storage = FileStorage()
+#B_model = BaseModel()
 #new_classes = {'BaseModel': BaseModel, 'User': User, 'State': State, 'Amenity':
 #               Amenity, 'Place': Place, 'City': City, 'Review': Review}
 
