@@ -56,5 +56,5 @@ class FileStorage:
                 for key, value in new_dict.items():
                     self.__objects[key] =\
                         new_classes[value['__class__']](**value)
-            except KeyboardInterrupt:
+            except Exception:
                 pass
