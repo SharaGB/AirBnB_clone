@@ -29,39 +29,39 @@ class TestFileStorage(unittest.TestCase):
 
     def test_all(self):
         """ Test that checks the all method. """
-        # self.F_storage = FileStorage()
-        # object = storage.all()
+        F_storage = FileStorage()
+        object_1 = storage.all()
         with self.assertRaises(AttributeError):
-            print(self.F_storage.objects)
+            print(F_storage.objects)
         with self.assertRaises(AttributeError):
             print(self.F_storage.__file_path)
-        self.assertEqual(type(self.object), dict)
-        self.assertEqual(type(self.F_storage.all()), dict)
-        self.assertTrue(hasattr(self.F_storage, 'all'), True)
+        self.assertEqual(type(object_1), dict)
+        self.assertEqual(type(F_storage.all()), dict)
+        self.assertTrue(hasattr(F_storage, 'all'), True)
         self.assertTrue(len(FileStorage.all.__doc__) > 0)
-        self.assertIs(self.object, storage._FileStorage__objects)
+        self.assertIs(object_1, storage._FileStorage__objects)
 
     def test_new(self):
         """ Test that checks the new method. """
-        # F_storage = FileStorage()
-        # B_model = BaseModel()
-        self.F_storage.new(self.B_model)
-        self.assertTrue(self.F_storage.all())
-        self.B_model.name = 'Da_Sa'
-        self.assertEqual(self.B_model.name, 'Da_Sa')
-        self.B_model.age = 89
-        self.assertEqual(self.B_model.age, 89)
-        self.assertTrue(hasattr(self.B_model, 'id'))
-        self.assertEqual(type(self.B_model.id), str)
+        storage_2 = FileStorage()
+        B_model = BaseModel()
+        storage_2.new(B_model)
+        self.assertTrue(storage_2.all())
+        B_model.name = 'Da_Sa'
+        self.assertEqual(B_model.name, 'Da_Sa')
+        B_model.age = 89
+        self.assertEqual(B_model.age, 89)
+        self.assertTrue(hasattr(B_model, 'id'))
+        self.assertEqual(type(B_model.id), str)
         self.assertTrue(hasattr(storage, 'new'), True)
         self.assertTrue(len(FileStorage.new.__doc__) > 0)
-        self.assertEqual(type(self.B_model), models.base_model.BaseModel)
+        self.assertEqual(type(B_model), models.base_model.BaseModel)
         with self.assertRaises(AttributeError):
-            self.F_storage.new('string')
+            storage_2.new('string')
         with self.assertRaises(AttributeError):
-            self.F_storage.new(float('nan'))
+            storage_2.new(float('nan'))
         with self.assertRaises(AttributeError):
-            self.F_storage.new(float('inf'))
+            storage_2.new(float('inf'))
 
 #    def test_save(self):
 #        """ Test that checks the save method. """
