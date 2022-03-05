@@ -41,10 +41,12 @@ class TestFileStorage(unittest.TestCase):
 
     def test_save(self):
         """ Test that checks the save method. """
-        self.assertTrue(os.path.isfile('file.json'))
-        self.assertTrue(hasattr(F_storage, 'save'), True)
-        self.assertEqual(os.path.isfile('file.json'), True)
+        self.assertTrue(hasattr(F_storage, 'save'), False)
+        self.assertEqual(os.path.isfile('file.json'), False)
+        self.assertFalse(os.path.isfile('file.json'), False)
+        self.assertFalse(hasattr(FileStorage, "__objects"), False)
         self.assertGreater(B_model.updated_at, B_model.created_at)
+        self.assertFalse(hasattr(FileStorage, "__file_path"), False)
 
     def test_reload(self):
         """ Test that checks the reload method. """
