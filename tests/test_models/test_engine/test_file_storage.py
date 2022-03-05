@@ -18,10 +18,10 @@ from models.base_model import BaseModel
 from models.engine.file_storage import FileStorage
 
 
-F_storage = FileStorage()
-B_model = BaseModel()
-new_classes = {'BaseModel': BaseModel, 'User': User, 'State': State, 'Amenity':
-               Amenity, 'Place': Place, 'City': City, 'Review': Review}
+#F_storage = FileStorage()
+#B_model = BaseModel()
+#new_classes = {'BaseModel': BaseModel, 'User': User, 'State': State, 'Amenity':
+#               Amenity, 'Place': Place, 'City': City, 'Review': Review}
 
 
 class TestFileStorage(unittest.TestCase):
@@ -66,23 +66,23 @@ class TestFileStorage(unittest.TestCase):
         with self.assertRaises(AttributeError):
             F_storage.new(float('inf'))
 
-    def test_save(self):
-        """ Test that checks the save method. """
-        F_storage.new(B_model)
-        F_storage.save()
-        self.assertTrue(os.path.isfile('file.json'))
-        self.assertTrue(hasattr(F_storage, 'save'), True)
-        self.assertEqual(os.path.isfile('file.json'), True)
-        self.assertGreater(B_model.updated_at, B_model.created_at)
+#    def test_save(self):
+#        """ Test that checks the save method. """
+#        F_storage.new(B_model)
+#        F_storage.save()
+#        self.assertTrue(os.path.isfile('file.json'))
+#        self.assertTrue(hasattr(F_storage, 'save'), True)
+#        self.assertEqual(os.path.isfile('file.json'), True)
+#        self.assertGreater(B_model.updated_at, B_model.created_at)
 
-    def test_reload(self):
-        """ Test that checks the reload method. """
-        key = 'BaseModel' + '.' + B_model.id
-        F_storage.new(B_model)
-        F_storage.save()
-        F_storage.reload()
-        self.assertTrue(F_storage.all()[key])
-        self.assertTrue(hasattr(F_storage, 'reload'), True)
+#    def test_reload(self):
+#        """ Test that checks the reload method. """
+#        key = 'BaseModel' + '.' + B_model.id
+#        F_storage.new(B_model)
+#        F_storage.save()
+#        F_storage.reload()
+#        self.assertTrue(F_storage.all()[key])
+#        self.assertTrue(hasattr(F_storage, 'reload'), True)
 
     def test_FileStorage_empty(self):
         """ Test that checks the empty FileStorage. """
