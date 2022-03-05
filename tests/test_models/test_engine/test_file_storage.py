@@ -29,15 +29,15 @@ class TestFileStorage(unittest.TestCase):
 
     def test_all(self):
         """ Test that checks the all method. """
-        F_storage = FileStorage()
+        # F_storage = FileStorage()
         object_1 = storage.all()
         with self.assertRaises(AttributeError):
-            print(F_storage.objects)
+            print(object_1.objects)
         with self.assertRaises(AttributeError):
-            print(self.F_storage.__file_path)
+            print(object_1.__file_path)
         self.assertEqual(type(object_1), dict)
-        self.assertEqual(type(F_storage.all()), dict)
-        self.assertTrue(hasattr(F_storage, 'all'), True)
+        self.assertEqual(type(object_1.all()), dict)
+        self.assertTrue(hasattr(object_1, 'all'), True)
         self.assertTrue(len(FileStorage.all.__doc__) > 0)
         self.assertIs(object_1, storage._FileStorage__objects)
 
