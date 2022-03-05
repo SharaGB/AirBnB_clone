@@ -75,14 +75,14 @@ class TestFileStorage(unittest.TestCase):
 #        self.assertEqual(os.path.isfile('file.json'), True)
 #        self.assertGreater(B_model.updated_at, B_model.created_at)
 
-    def test_reload(self):
-        """ Test that checks the reload method. """
-        key = 'BaseModel' + '.' + B_model.id
-        F_storage.new(B_model)
-        F_storage.save()
-        F_storage.reload()
-        self.assertTrue(F_storage.all()[key])
-        self.assertTrue(hasattr(F_storage, 'reload'), True)
+#    def test_reload(self):
+#        """ Test that checks the reload method. """
+#        key = 'BaseModel' + '.' + B_model.id
+#        F_storage.new(B_model)
+#        F_storage.save()
+#        F_storage.reload()
+#        self.assertTrue(F_storage.all()[key])
+#        self.assertTrue(hasattr(F_storage, 'reload'), True)
 
     def test_FileStorage_empty(self):
         """ Test that checks the empty FileStorage. """
