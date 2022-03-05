@@ -10,6 +10,7 @@ from models import storage
 from models.base_model import BaseModel
 from models.engine.file_storage import FileStorage
 
+
 F_storage = FileStorage()
 B_model = BaseModel()
 object = storage.all()
@@ -17,7 +18,6 @@ object = storage.all()
 
 class TestFileStorage(unittest.TestCase):
     """ Write unittests for the class FileStorage. """
-
     def test_pep8_conformance(self):
         """ Test that we conform to PEP8. """
         pep8style = pep8.StyleGuide(quiet=True)
@@ -35,9 +35,9 @@ class TestFileStorage(unittest.TestCase):
 
     def test_new(self):
         """ Test that checks the new method. """
-        B_model.name = 'Da_Sa'
+        self.B_model.name = 'Da_Sa'
         self.assertEqual(B_model.name, 'Da_Sa')
-        self.assertEqual(B_model.name, 'Hello')
+        self.assertNotEqual(B_model.name, 'Hello')
         self.assertTrue(hasattr(storage, 'new'), True)
         self.assertTrue(len(FileStorage.new.__doc__) > 0)
         self.assertEqual(type(B_model), models.base_model.BaseModel)
