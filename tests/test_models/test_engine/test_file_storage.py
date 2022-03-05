@@ -48,6 +48,8 @@ class TestFileStorage(unittest.TestCase):
 
     def test_new(self):
         """ Test that checks the new method. """
+        F_storage.new(B_model)
+        self.assertTrue(F_storage.all())
         B_model.name = 'Da_Sa'
         self.assertEqual(B_model.name, 'Da_Sa')
         B_model.age = 89
@@ -57,9 +59,17 @@ class TestFileStorage(unittest.TestCase):
         self.assertTrue(hasattr(storage, 'new'), True)
         self.assertTrue(len(FileStorage.new.__doc__) > 0)
         self.assertEqual(type(B_model), models.base_model.BaseModel)
+        with self.assertRaises(AttributeError):
+            F_storage.new('string')
+        with self.assertRaises(AttributeError):
+            F_storage.new(float('nan'))
+        with self.assertRaises(AttributeError):
+            F_storage.new(float('inf'))
 
     def test_save(self):
         """ Test that checks the save method. """
+        F_storage.new(B_model)
+        F_storage.save()
         self.assertTrue(os.path.isfile('file.json'))
         self.assertTrue(hasattr(F_storage, 'save'), True)
         self.assertEqual(os.path.isfile('file.json'), True)
@@ -67,6 +77,11 @@ class TestFileStorage(unittest.TestCase):
 
     def test_reload(self):
         """ Test that checks the reload method. """
+        key = 'BaseModel' + '.' + B_model.id
+        F_storage.new(B_model)
+        F_storage.save()
+        F_storage.reload()
+        self.assertTrue(F_storage.all()[key])
         self.assertTrue(hasattr(F_storage, 'reload'), True)
 
     def test_FileStorage_empty(self):
