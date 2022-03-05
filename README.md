@@ -138,7 +138,7 @@ $
 ### Example
 
 (hbnb) create User
-* ecd15b51-1b07-4dcc-a0ee-6f9ababb00fe
+<p>ecd15b51-1b07-4dcc-a0ee-6f9ababb00fe</p>
 
 This command create a new entrance in the memory and return a unique id number.
 
