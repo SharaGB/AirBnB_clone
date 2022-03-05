@@ -16,9 +16,9 @@ class TestFileStorage(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         """Set up class."""
-        cls.F_storage = FileStorage()
-        cls.B_model = BaseModel()
-        cls.object = storage.all()
+        # cls.F_storage = FileStorage()
+        # cls.B_model = BaseModel()
+        # cls.object = storage.all()
 
     def test_pep8_conformance(self):
         """ Test that we conform to PEP8. """
