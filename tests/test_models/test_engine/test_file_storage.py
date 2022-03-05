@@ -7,13 +7,21 @@ import models
 import os.path
 import unittest
 from models import storage
+from models.city import City
+from models.user import User
+from models.place import Place
+from models.state import State
+from models.review import Review
+from models.amenity import Amenity
+from models.engine import file_storage
 from models.base_model import BaseModel
 from models.engine.file_storage import FileStorage
 
 
 F_storage = FileStorage()
 B_model = BaseModel()
-object = storage.all()
+new_classes = {'BaseModel': BaseModel, 'User': User, 'State': State, 'Amenity':
+               Amenity, 'Place': Place, 'City': City, 'Review': Review}
 
 
 class TestFileStorage(unittest.TestCase):
@@ -27,23 +35,32 @@ class TestFileStorage(unittest.TestCase):
 
     def test_all(self):
         """ Test that checks the all method. """
-        self.assertEqual(object, {})
+        object = storage.all()
+        with self.assertRaises(AttributeError):
+            print(F_storage.objects)
+        with self.assertRaises(AttributeError):
+            print(F_storage.file_path)
         self.assertEqual(type(object), dict)
+        self.assertEqual(type(F_storage.all()), dict)
         self.assertTrue(hasattr(F_storage, 'all'), True)
         self.assertTrue(len(FileStorage.all.__doc__) > 0)
-        self.assertIs(object, storage.__FileStorage__objects)
+        self.assertIs(object, storage._FileStorage__objects)
 
     def test_new(self):
         """ Test that checks the new method. """
         self.B_model.name = 'Da_Sa'
         self.assertEqual(B_model.name, 'Da_Sa')
-        self.assertNotEqual(B_model.name, 'Hello')
+        B_model.age = 89
+        self.assertEqual(B_model.age, 89)
+        self.assertTrue(hasattr(B_model, 'id'))
+        self.assertEqual(type(B_model.id), str)
         self.assertTrue(hasattr(storage, 'new'), True)
         self.assertTrue(len(FileStorage.new.__doc__) > 0)
         self.assertEqual(type(B_model), models.base_model.BaseModel)
 
     def test_save(self):
         """ Test that checks the save method. """
+        B_model.save()
         self.assertTrue(os.path.isfile('file.json'))
         self.assertTrue(hasattr(F_storage, 'save'), True)
         self.assertEqual(os.path.isfile('file.json'), True)
