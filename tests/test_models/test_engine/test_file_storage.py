@@ -7,6 +7,7 @@ import models
 import os.path
 import unittest
 from models import storage
+from models.engine import file_storage
 from models.base_model import BaseModel
 from models.engine.file_storage import FileStorage
 
@@ -30,6 +31,7 @@ class TestFileStorage(unittest.TestCase):
         self.assertEqual(type(object), dict)
         self.assertTrue(hasattr(F_storage, 'all'), True)
         self.assertTrue(len(FileStorage.all.__doc__) > 0)
+        self.assertIs(object, storage._FileStorage__objects)
 
     def test_new(self):
         """ Test that checks the new method. """
