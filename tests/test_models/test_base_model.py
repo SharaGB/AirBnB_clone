@@ -42,9 +42,36 @@ class test_base(unittest.TestCase):
 
     def test_save(self):
         """Test the save method."""
+        past_update = self.instance.updated_at
+        self.instance.save()
+        self.assertIsNot(self.instance.created_at, self.instance.updated_at)
+        self.assertIsNot(past_update, self.instance.updated_at)
 
     def test_to_dict(self):
         """Test the dict method."""
+        new = BaseModel()
+        new.name = "School"
+        new.my_number = 2020
+        dictionary = new.to_dict()
+        attr = [
+            "id",
+            "created_at",
+            "updated_at",
+            "name",
+            "my_number",
+            "__class__"
+        ]
+        self.assertCountEqual(dictionary.keys(), attr)
+        self.assertIn('id', dictionary.keys())
+        self.assertIn('created_at', dictionary.keys())
+        self.assertIn('updated_at', dictionary.keys())
+        self.assertIn('name', dictionary.keys())
+        self.assertIn('my_numbers', dictionary.keys())
+        self.assertIn('__class__', dictionary.keys())
+        self.assertEqual(dictionary['name'], "School")
+        self.assertIs(type(dictionary['name']), str)
+        self.assertEqual(dictionary['my_number'], 2020)
+        self.assertIs(type(dictionary['my_number']), int)
 
 
 if __name__ == '__main__':
