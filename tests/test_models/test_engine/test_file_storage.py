@@ -33,18 +33,18 @@ class TestFileStorage(unittest.TestCase):
         self.assertEqual(result.total_errors, 0,
                          "Found code style errors (and warnings).")
 
-#    def test_all(self):
-#        """ Test that checks the all method. """
-#        object = storage.all()
-#        with self.assertRaises(AttributeError):
-#            print(F_storage.objects)
-#        with self.assertRaises(AttributeError):
-#            print(F_storage.file_path)
-#        self.assertEqual(type(object), dict)
-#        self.assertEqual(type(F_storage.all()), dict)
-#        self.assertTrue(hasattr(F_storage, 'all'), True)
-#        self.assertTrue(len(FileStorage.all.__doc__) > 0)
-#        self.assertIs(object, storage._FileStorage__objects)
+    def test_all(self):
+        """ Test that checks the all method. """
+        object = storage.all()
+        with self.assertRaises(AttributeError):
+            print(F_storage.objects)
+        with self.assertRaises(AttributeError):
+            print(F_storage.file_path)
+        self.assertEqual(type(object), dict)
+        self.assertEqual(type(F_storage.all()), dict)
+        self.assertTrue(hasattr(F_storage, 'all'), True)
+        self.assertTrue(len(FileStorage.all.__doc__) > 0)
+        self.assertIs(object, storage._FileStorage__objects)
 
 #    def test_new(self):
 #        """ Test that checks the new method. """
