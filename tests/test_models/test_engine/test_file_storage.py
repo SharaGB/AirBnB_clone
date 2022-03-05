@@ -46,25 +46,25 @@ class TestFileStorage(unittest.TestCase):
         self.assertTrue(len(FileStorage.all.__doc__) > 0)
         self.assertIs(object, storage._FileStorage__objects)
 
-#    def test_new(self):
-#        """ Test that checks the new method. """
-#        F_storage.new(B_model)
-#        self.assertTrue(F_storage.all())
-#        B_model.name = 'Da_Sa'
-#        self.assertEqual(B_model.name, 'Da_Sa')
-#        B_model.age = 89
-#        self.assertEqual(B_model.age, 89)
-#        self.assertTrue(hasattr(B_model, 'id'))
-#        self.assertEqual(type(B_model.id), str)
-#        self.assertTrue(hasattr(storage, 'new'), True)
-#        self.assertTrue(len(FileStorage.new.__doc__) > 0)
-#        self.assertEqual(type(B_model), models.base_model.BaseModel)
-#        with self.assertRaises(AttributeError):
-#            F_storage.new('string')
-#        with self.assertRaises(AttributeError):
-#            F_storage.new(float('nan'))
-#        with self.assertRaises(AttributeError):
-#            F_storage.new(float('inf'))
+    def test_new(self):
+        """ Test that checks the new method. """
+        F_storage.new(B_model)
+        self.assertTrue(F_storage.all())
+        B_model.name = 'Da_Sa'
+        self.assertEqual(B_model.name, 'Da_Sa')
+        B_model.age = 89
+        self.assertEqual(B_model.age, 89)
+        self.assertTrue(hasattr(B_model, 'id'))
+        self.assertEqual(type(B_model.id), str)
+        self.assertTrue(hasattr(storage, 'new'), True)
+        self.assertTrue(len(FileStorage.new.__doc__) > 0)
+        self.assertEqual(type(B_model), models.base_model.BaseModel)
+        with self.assertRaises(AttributeError):
+            F_storage.new('string')
+        with self.assertRaises(AttributeError):
+            F_storage.new(float('nan'))
+        with self.assertRaises(AttributeError):
+            F_storage.new(float('inf'))
 
 #    def test_save(self):
 #        """ Test that checks the save method. """
