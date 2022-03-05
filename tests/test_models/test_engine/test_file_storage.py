@@ -18,8 +18,6 @@ from models.base_model import BaseModel
 from models.engine.file_storage import FileStorage
 
 
-#F_storage = FileStorage()
-#B_model = BaseModel()
 #new_classes = {'BaseModel': BaseModel, 'User': User, 'State': State, 'Amenity':
 #               Amenity, 'Place': Place, 'City': City, 'Review': Review}
 
@@ -35,6 +33,7 @@ class TestFileStorage(unittest.TestCase):
 
     def test_all(self):
         """ Test that checks the all method. """
+        F_storage = FileStorage()
         object = storage.all()
         with self.assertRaises(AttributeError):
             print(F_storage.objects)
@@ -48,6 +47,8 @@ class TestFileStorage(unittest.TestCase):
 
     def test_new(self):
         """ Test that checks the new method. """
+        F_storage = FileStorage()
+        B_model = BaseModel()
         F_storage.new(B_model)
         self.assertTrue(F_storage.all())
         B_model.name = 'Da_Sa'
