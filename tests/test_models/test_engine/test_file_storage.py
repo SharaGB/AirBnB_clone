@@ -48,7 +48,7 @@ class TestFileStorage(unittest.TestCase):
 
     def test_new(self):
         """ Test that checks the new method. """
-        self.B_model.name = 'Da_Sa'
+        B_model.name = 'Da_Sa'
         self.assertEqual(B_model.name, 'Da_Sa')
         B_model.age = 89
         self.assertEqual(B_model.age, 89)
