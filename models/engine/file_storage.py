@@ -54,9 +54,6 @@ class FileStorage:
                 with open(self.__file_path, 'r', encoding='UTF-8') as file:
                     new_dict = json.loads(file.read())
                 for key, value in new_dict.items():
-                    # object = value['__class__']
-                    # objects = object + '(**value)'
-                    # self.__objects[key] = eval(objects)
                     self.__objects[key] =\
                         new_classes[value['__class__']](**value)
             except KeyboardInterrupt:
