@@ -28,7 +28,7 @@ class FileStorage:
 
     def new(self, obj):
         """ Sets in __objects the obj with key <obj class name>.id """
-        key = "{}.{}".format(obj.__class__.__name__, str(obj.id))
+        key = "{}.{}".format(obj.__class__.__name__, obj.id)
         # In dictionaries, if the key does not exist, it creates it
         # and if it does exist, it replaces it.
         self.__objects[key] = obj
