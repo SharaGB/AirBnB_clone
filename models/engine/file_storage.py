@@ -60,6 +60,5 @@ class FileStorage:
             with open(self.__file_path, 'r') as file:
                 new_dict = json.loads(file.read())
             for key, value in new_dict.items():
-                object = self.new_classes
                 self.__objects[key] =\
                     new_classes[value['__class__']](**value)
