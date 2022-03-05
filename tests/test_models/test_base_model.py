@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 """"""
+import pep8
 from datetime import datetime
 import unittest
 from models.base_model import BaseModel
@@ -17,6 +18,13 @@ class test_base(unittest.TestCase):
     def tearDownClass(cls):
         """Final step."""
         del cls.instance
+
+    def test_pep8_conformance(self):
+        """ Test that we conform to PEP8. """
+        pep8style = pep8.StyleGuide(quiet=True)
+        result = pep8style.check_files(['models/base_model.py'])
+        self.assertEqual(result.total_errors, 0,
+                         "Found code style errors (and warnings).")
 
     def test_doc(self):
         """Test the documentation of BaseModel."""
@@ -66,7 +74,7 @@ class test_base(unittest.TestCase):
         self.assertIn('created_at', dictionary.keys())
         self.assertIn('updated_at', dictionary.keys())
         self.assertIn('name', dictionary.keys())
-        self.assertIn('my_numbers', dictionary.keys())
+        self.assertIn('my_number', dictionary.keys())
         self.assertIn('__class__', dictionary.keys())
         self.assertEqual(dictionary['name'], "School")
         self.assertIs(type(dictionary['name']), str)
