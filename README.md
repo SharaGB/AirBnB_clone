@@ -135,6 +135,20 @@ $
 
 <div id='id-section7'/>
 
+### Example
+
+(hbnb) create User
+ecd15b51-1b07-4dcc-a0ee-6f9ababb00fe
+
+This command create a new entrance in the memory and return a unique id number.
+
+(hbnb) show User ecd15b51-1b07-4dcc-a0ee-6f9ababb00fe
+\[User\] (ecd15b51-1b07-4dcc-a0ee-6f9ababb00fe) {'id': 'ecd15b51-1b07-4dcc-a0ee-6f9ababb00fe', 'created_at': datetime.datetime(2022, 3, 5, 16, 43, 31, 938584), 'updated_at': datetime.datetime(2022, 3, 5, 16, 43, 31, 938671)}
+
+This command displays a dictionary with all the attributes that was create for the new entrance.
+
+<div id='id-section8'/>
+
 ### Requeriments ✔️
 
 - [x] Write a [README]()
@@ -152,5 +166,5 @@ $
 
 ## Authors 🖋️
 
-* [__Daniela Restrepo__](https://github.com/DaboRestrepo)
+* [__Daniela Botero__](https://github.com/DaboRestrepo)
 * [__Shara García__](https://github.com/SharaGB)
