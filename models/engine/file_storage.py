@@ -57,11 +57,9 @@ class FileStorage:
         If the file doesn’t exist, no exception should be raised) """
 
         if os.path.exists(self.__file_path):
-            try:
-                with open(self.__file_path, 'r') as file:
-                    new_dict = json.loads(file.read())
-                for key, value in new_dict.items():
-                    object = self.classes[value["__class__"]](**value)
-                    FileStorage.__objects[key] = object
-            except Exception:
-                pass
+            with open(self.__file_path, 'r') as file:
+                new_dict = json.loads(file.read())
+            for key, value in new_dict.items():
+                object = value['__class__']
+                objects = object + '(**value)'
+                self.__objects[key] = eval(objects)
