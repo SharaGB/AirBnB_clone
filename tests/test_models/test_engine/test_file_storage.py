@@ -41,27 +41,27 @@ class TestFileStorage(unittest.TestCase):
         self.assertTrue(len(FileStorage.all.__doc__) > 0)
         self.assertIs(object_1, storage._FileStorage__objects)
 
-    def test_new(self):
-        """ Test that checks the new method. """
-        storage_2 = FileStorage()
-        B_model = BaseModel()
-        storage_2.new(B_model)
-        self.assertTrue(storage_2.all())
-        B_model.name = 'Da_Sa'
-        self.assertEqual(B_model.name, 'Da_Sa')
-        B_model.age = 89
-        self.assertEqual(B_model.age, 89)
-        self.assertTrue(hasattr(B_model, 'id'))
-        self.assertEqual(type(B_model.id), str)
-        self.assertTrue(hasattr(storage, 'new'), True)
-        self.assertTrue(len(FileStorage.new.__doc__) > 0)
-        self.assertEqual(type(B_model), models.base_model.BaseModel)
-        with self.assertRaises(AttributeError):
-            storage_2.new('string')
-        with self.assertRaises(AttributeError):
-            storage_2.new(float('nan'))
-        with self.assertRaises(AttributeError):
-            storage_2.new(float('inf'))
+    # def test_new(self):
+    #     """ Test that checks the new method. """
+    #     storage_2 = FileStorage()
+    #     B_model = BaseModel()
+    #     storage_2.new(B_model)
+    #     self.assertTrue(storage_2.all())
+    #     B_model.name = 'Da_Sa'
+    #     self.assertEqual(B_model.name, 'Da_Sa')
+    #     B_model.age = 89
+    #     self.assertEqual(B_model.age, 89)
+    #     self.assertTrue(hasattr(B_model, 'id'))
+    #     self.assertEqual(type(B_model.id), str)
+    #     self.assertTrue(hasattr(storage, 'new'), True)
+    #     self.assertTrue(len(FileStorage.new.__doc__) > 0)
+    #     self.assertEqual(type(B_model), models.base_model.BaseModel)
+    #     with self.assertRaises(AttributeError):
+    #         storage_2.new('string')
+    #     with self.assertRaises(AttributeError):
+    #         storage_2.new(float('nan'))
+    #     with self.assertRaises(AttributeError):
+    #         storage_2.new(float('inf'))
 
 #    def test_save(self):
 #        """ Test that checks the save method. """
@@ -81,10 +81,10 @@ class TestFileStorage(unittest.TestCase):
 #        self.assertTrue(self.F_storage.all()[key])
 #        self.assertTrue(hasattr(self.F_storage, 'reload'), True)
 
-    def test_FileStorage_empty(self):
-        """ Test that checks the empty FileStorage. """
-        self.assertIsNotNone(FileStorage.__doc__)
-        self.assertEqual(type(FileStorage()), FileStorage)
+    # def test_FileStorage_empty(self):
+    #     """ Test that checks the empty FileStorage. """
+    #     self.assertIsNotNone(FileStorage.__doc__)
+    #     self.assertEqual(type(FileStorage()), FileStorage)
 
 
 if __name__ == '__main__':
