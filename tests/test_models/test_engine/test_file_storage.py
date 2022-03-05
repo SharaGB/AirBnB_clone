@@ -70,7 +70,6 @@ class TestFileStorage(unittest.TestCase):
         """ Test that checks the save method. """
         F_storage.new(B_model)
         F_storage.save()
-        B_model.save()
         self.assertTrue(os.path.isfile('file.json'))
         self.assertTrue(hasattr(F_storage, 'save'), True)
         self.assertEqual(os.path.isfile('file.json'), True)
