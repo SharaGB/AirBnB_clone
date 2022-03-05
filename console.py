@@ -125,6 +125,7 @@ class HBNBCommand(cmd.Cmd):
 
     def default(self, args):
         """ Retrieve all instances of a class. """
+        count = 0
         splitline = args.split('.', 1)
         if len(splitline) >= 2:
             args = splitline[1].split('(')
