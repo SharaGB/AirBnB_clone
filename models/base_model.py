@@ -5,7 +5,6 @@ Module to write a class BaseModel.
 from uuid import uuid4
 from datetime import datetime
 import models
-date = '%Y-%m-%dT%H:%M:%S.%f'
 
 
 class BaseModel:
@@ -15,14 +14,17 @@ class BaseModel:
 
     def __init__(self, *args, **kwargs):
         """ Initializes the data. """
-        if len(kwargs) != 0:
+        if kwargs:
             for key, value in kwargs.items():
                 if key != '__class__':
                     if key == 'created_at' or key == 'updated_at':
                         # Establecemos el valor del atributo especificado
                         # del objeto especificado.
-                        setattr(self, key, datetime.strptime(value, date))
-                    setattr(self, key, value)
+                        date = '%Y-%m-%dT%H:%M:%S.%f'
+                        value = datetime.strptime(value, date)
+                        setattr(self, key, value)
+                    else:
+                        setattr(self, key, value)
         else:
             self.id = str(uuid4())
             self.created_at = datetime.now()
