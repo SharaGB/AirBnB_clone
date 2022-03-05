@@ -4,26 +4,15 @@ Unittest for file_storage([..])
 """
 import pep8
 import models
-import os.path
 import unittest
 from models import storage
-from models.city import City
-from models.user import User
-from models.place import Place
-from models.state import State
-from models.review import Review
-from models.amenity import Amenity
-from models.engine import file_storage
 from models.base_model import BaseModel
 from models.engine.file_storage import FileStorage
 
 
-#new_classes = {'BaseModel': BaseModel, 'User': User, 'State': State, 'Amenity':
-#               Amenity, 'Place': Place, 'City': City, 'Review': Review}
-
-
 class TestFileStorage(unittest.TestCase):
     """ Write unittests for the class FileStorage. """
+
     def test_pep8_conformance(self):
         """ Test that we conform to PEP8. """
         pep8style = pep8.StyleGuide(quiet=True)
