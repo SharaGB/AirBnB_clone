@@ -27,17 +27,14 @@ class TestFileStorage(unittest.TestCase):
 
     def test_all(self):
         """ Test that checks the all method. """
-        self.assertEqual(object, {})
         self.assertEqual(type(object), dict)
         self.assertTrue(hasattr(F_storage, 'all'), True)
         self.assertTrue(len(FileStorage.all.__doc__) > 0)
-        self.assertIs(object, storage.__FileStorage__objects)
 
     def test_new(self):
         """ Test that checks the new method. """
         B_model.name = 'Da_Sa'
         self.assertEqual(B_model.name, 'Da_Sa')
-        self.assertEqual(B_model.name, 'Hello')
         self.assertTrue(hasattr(storage, 'new'), True)
         self.assertTrue(len(FileStorage.new.__doc__) > 0)
         self.assertEqual(type(B_model), models.base_model.BaseModel)
