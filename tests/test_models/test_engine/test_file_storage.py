@@ -84,11 +84,11 @@ class TestFileStorage(unittest.TestCase):
 #        self.assertTrue(F_storage.all()[key])
 #        self.assertTrue(hasattr(F_storage, 'reload'), True)
 
-#    def test_FileStorage_empty(self):
-#        """ Test that checks the empty FileStorage. """
-#        self.assertIsNotNone(FileStorage.__doc__)
-#        self.assertEqual(type(FileStorage()), FileStorage)
+    def test_FileStorage_empty(self):
+        """ Test that checks the empty FileStorage. """
+        self.assertIsNotNone(FileStorage.__doc__)
+        self.assertEqual(type(FileStorage()), FileStorage)
 
 
-#if __name__ == '__main__':
-#    unittest.main()
+if __name__ == '__main__':
+    unittest.main()
