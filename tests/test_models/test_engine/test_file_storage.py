@@ -17,6 +17,7 @@ from models.engine import file_storage
 from models.base_model import BaseModel
 from models.engine.file_storage import FileStorage
 
+
 F_storage = FileStorage()
 B_model = BaseModel()
 new_classes = {'BaseModel': BaseModel, 'User': User, 'State': State, 'Amenity':
@@ -25,7 +26,6 @@ new_classes = {'BaseModel': BaseModel, 'User': User, 'State': State, 'Amenity':
 
 class TestFileStorage(unittest.TestCase):
     """ Write unittests for the class FileStorage. """
-
     def test_pep8_conformance(self):
         """ Test that we conform to PEP8. """
         pep8style = pep8.StyleGuide(quiet=True)
@@ -70,6 +70,7 @@ class TestFileStorage(unittest.TestCase):
         """ Test that checks the save method. """
         F_storage.new(B_model)
         F_storage.save()
+        B_model.save()
         self.assertTrue(os.path.isfile('file.json'))
         self.assertTrue(hasattr(F_storage, 'save'), True)
         self.assertEqual(os.path.isfile('file.json'), True)
