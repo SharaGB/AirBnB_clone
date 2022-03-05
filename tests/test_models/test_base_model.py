@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""""""
+""" Module to test the BaseModel class."""
 import pep8
 from datetime import datetime
 import unittest
