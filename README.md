@@ -137,18 +137,38 @@ $
 
 ### Example
 
+*create*:
 ```
 (hbnb) create User
 ecd15b51-1b07-4dcc-a0ee-6f9ababb00fe
 ```
-This command create a new entrance in the memory and return a unique id number.
-
+*show*:
+```
 (hbnb) show User ecd15b51-1b07-4dcc-a0ee-6f9ababb00fe
-<p>\[User\] (ecd15b51-1b07-4dcc-a0ee-6f9ababb00fe) {'id': 'ecd15b51-1b07-4dcc-a0ee-6f9ababb00fe', 'created_at': datetime.datetime(2022, 3, 5, 16, 43, 31, 938584), 'updated_at': datetime.datetime(2022, 3, 5, 16, 43, 31, 938671)}</p>
-
-This command displays a dictionary with all the attributes that was create for the new entrance.
-
-
+[User] (ecd15b51-1b07-4dcc-a0ee-6f9ababb00fe) {'id': 'ecd15b51-1b07-4dcc-a0ee-6f9ababb00fe', 'created_at': datetime.datetime(2022, 3, 5, 16, 43, 31, 938584), 'updated_at': datetime.datetime(2022, 3, 5, 16, 43, 31, 938671)}
+```
+*all*:
+```
+(hbnb) all
+["[User] (d14c7cf7-7e1d-4197-8585-6935e5848ca0) {'id': 'd14c7cf7-7e1d-4197-8585-6935e5848ca0', 'created_at': datetime.datetime(2022, 3, 5, 16, 57, 10, 697066), 'updated_at': datetime.datetime(2022, 3, 5, 16, 57, 10, 697136)}", "[User] (87a5fe48-130a-4ad4-8f82-25aae52b103f) {'id': '87a5fe48-130a-4ad4-8f82-25aae52b103f', 'created_at': datetime.datetime(2022, 3, 5, 16, 59, 48, 450889), 'updated_at': datetime.datetime(2022, 3, 5, 16, 59, 48, 450927)}", "[User] (ecd15b51-1b07-4dcc-a0ee-6f9ababb00fe) {'id': 'ecd15b51-1b07-4dcc-a0ee-6f9ababb00fe', 'created_at': datetime.datetime(2022, 3, 5, 16, 43, 31, 938584), 'updated_at': datetime.datetime(2022, 3, 5, 16, 43, 31, 938671)}","[BaseModel] (7ec9424e-1c83-4d48-b44d-c5a6ef5905fc) {'id': '7ec9424e-1c83-4d48-b44d-c5a6ef5905fc', 'created_at': datetime.datetime(2022, 3, 5, 17, 0, 34, 810830), 'updated_at': datetime.datetime(2022, 3, 5, 17, 0, 34, 810882)}"]
+```
+*all User*:
+```
+(hbnb) all User
+["[User] (d14c7cf7-7e1d-4197-8585-6935e5848ca0) {'id': 'd14c7cf7-7e1d-4197-8585-6935e5848ca0', 'created_at': datetime.datetime(2022, 3, 5, 16, 57, 10, 697066), 'updated_at': datetime.datetime(2022, 3, 5, 16, 57, 10, 697136)}", "[User] (87a5fe48-130a-4ad4-8f82-25aae52b103f) {'id': '87a5fe48-130a-4ad4-8f82-25aae52b103f', 'created_at': datetime.datetime(2022, 3, 5, 16, 59, 48, 450889), 'updated_at': datetime.datetime(2022, 3, 5, 16, 59, 48, 450927)}", "[User] (ecd15b51-1b07-4dcc-a0ee-6f9ababb00fe) {'id': 'ecd15b51-1b07-4dcc-a0ee-6f9ababb00fe', 'created_at': datetime.datetime(2022, 3, 5, 16, 43, 31, 938584), 'updated_at': datetime.datetime(2022, 3, 5, 16, 43, 31, 938671)}"]
+```
+*update*:
+```
+(hbnb) update BaseModel 7ec9424e-1c83-4d48-b44d-c5a6ef5905fc name 'Betty'
+(hbnb) show BaseModel 7ec9424e-1c83-4d48-b44d-c5a6ef5905fc
+[BaseModel] (7ec9424e-1c83-4d48-b44d-c5a6ef5905fc) {'id': '7ec9424e-1c83-4d48-b44d-c5a6ef5905fc', 'created_at': datetime.datetime(2022, 3, 5, 17, 0, 34, 810830), 'updated_at': datetime.datetime(2022, 3, 5, 17, 0, 34, 810882), 'name': 'Betty'}
+```
+*destroy*
+```
+(hbnb) destroy BaseModel 7ec9424e-1c83-4d48-b44d-c5a6ef5905fc
+(hbnb) show BaseModel 7ec9424e-1c83-4d48-b44d-c5a6ef5905fc
+** no instance found **
+```
 
 <div id='id-section8'/>
 
