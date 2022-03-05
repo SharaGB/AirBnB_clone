@@ -10,8 +10,8 @@ from models.base_model import BaseModel
 user = User()
 
 
-class TestState(unittest.TestCase):
-    """ Write unittests for the class State. """
+class TestUser(unittest.TestCase):
+    """ Write unittests for the class User. """
 
     def test_pep8_conformance(self):
         """ Test that we conform to PEP8. """
@@ -22,14 +22,14 @@ class TestState(unittest.TestCase):
 
     def test_attr_User(self):
         """ Test that checks the User class. """
+        self.assertTrue(hasattr(user, 'email'))
+        self.assertEqual(user.email, '')
+        self.assertTrue(hasattr(user, 'password'))
+        self.assertEqual(user.password, '')
         self.assertTrue(hasattr(user, 'first_name'))
         self.assertEqual(user.first_name, '')
         self.assertTrue(hasattr(user, 'last_name'))
         self.assertEqual(user.last_name, '')
-        self.assertTrue(hasattr(user, 'password'))
-        self.assertEqual(user.password, '')
-        self.assertTrue(hasattr(user, 'email'))
-        self.assertEqual(user.email, '')
 
     def test_User(self):
         """ Test that checks the User class. """
