@@ -9,17 +9,13 @@ from models import storage
 from models.base_model import BaseModel
 from models.engine.file_storage import FileStorage
 
+F_storage = FileStorage()
+B_model = BaseModel()
+object = storage.all()
+
 
 class TestFileStorage(unittest.TestCase):
     """ Write unittests for the class FileStorage. """
-
-    @classmethod
-    def setUpClass(cls):
-        """Set up class."""
-        # cls.F_storage = FileStorage()
-        # cls.B_model = BaseModel()
-        # cls.object = storage.all()
-
     def test_pep8_conformance(self):
         """ Test that we conform to PEP8. """
         pep8style = pep8.StyleGuide(quiet=True)
@@ -29,17 +25,42 @@ class TestFileStorage(unittest.TestCase):
 
     def test_all(self):
         """ Test that checks the all method. """
-        F_storage = FileStorage()
-        object_1 = storage.all()
-        # with self.assertRaises(AttributeError):
-        #     print(F_storage.objects)
-        # with self.assertRaises(AttributeError):
-        #     print(self.F_storage.__file_path)
-        self.assertEqual(type(object_1), dict)
-        # self.assertEqual(type(F_storage.all()), dict)
-        # self.assertTrue(hasattr(F_storage, 'all'), True)
-        self.assertTrue(len(FileStorage.all.__doc__) > 0)
-        self.assertIs(object_1, storage._FileStorage__objects)
+        self.assertEqual(object, {})
+        self.assertEqual(type(object), dict)
+        self.assertTrue(hasattr(F_storage, 'all'), True)
+        self.assertTrue(len(FileStorage.all.doc) > 0)
+        self.assertIs(object, storage.FileStorageobjects)
+
+# class TestFileStorage(unittest.TestCase):
+#     """ Write unittests for the class FileStorage. """
+
+#     @classmethod
+#     def setUpClass(cls):
+#         """Set up class."""
+#         # cls.F_storage = FileStorage()
+#         # cls.B_model = BaseModel()
+#         # cls.object = storage.all()
+
+#     def test_pep8_conformance(self):
+#         """ Test that we conform to PEP8. """
+#         pep8style = pep8.StyleGuide(quiet=True)
+#         result = pep8style.check_files(['models/engine/file_storage.py'])
+#         self.assertEqual(result.total_errors, 0,
+#                          "Found code style errors (and warnings).")
+
+    # def test_all(self):
+    #     """ Test that checks the all method. """
+    #     F_storage = FileStorage()
+    #     object_1 = storage.all()
+    #     # with self.assertRaises(AttributeError):
+    #     #     print(F_storage.objects)
+    #     # with self.assertRaises(AttributeError):
+    #     #     print(self.F_storage.__file_path)
+    #     self.assertEqual(type(object_1), dict)
+    #     # self.assertEqual(type(F_storage.all()), dict)
+    #     # self.assertTrue(hasattr(F_storage, 'all'), True)
+    #     self.assertTrue(len(FileStorage.all.__doc__) > 0)
+    #     self.assertIs(object_1, storage._FileStorage__objects)
 
     # def test_new(self):
     #     """ Test that checks the new method. """
