@@ -25,7 +25,7 @@ class TestFileStorage(unittest.TestCase):
 
     def test_all(self):
         """ Test that checks the all method. """
-        # self.assertEqual(object, {})
+        self.assertNotEqual(object, {})
         with self.assertRaises(AttributeError):
             print(F_storage.objects)
         with self.assertRaises(AttributeError):
