@@ -174,7 +174,7 @@ ecd15b51-1b07-4dcc-a0ee-6f9ababb00fe
 
 ### Requeriments ✔️
 
-- [x] Write a [README]()
+- [x] Write a [README](https://github.com/SharaGB/AirBnB_clone/blob/main/README.md)
 - [x] Have an [AUTHORS](https://github.com/SharaGB/AirBnB_clone/blob/main/AUTHORS) file at the root of your repository
 - [x] Use brances and pull requests on GitHub
 - [x] Write beautiful code that passes the PEP8 checks.
@@ -190,4 +190,4 @@ ecd15b51-1b07-4dcc-a0ee-6f9ababb00fe
 ## Authors 🖋️
 
 * [__Daniela Botero__](https://github.com/DaboRestrepo)
-* [__Shara García__](https://github.com/SharaGB)
+* [__Shara García__](https://www.linkedin.com/in/sharagb/)
